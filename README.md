@@ -1,2 +1,2 @@
 # ArtificialAcquaintances
-short project for COP4331
+small personal contact project for COP4331
