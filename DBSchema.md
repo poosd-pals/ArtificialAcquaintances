@@ -18,6 +18,7 @@ Table stores directory info and login credentials for each user.
 | PhoneNum | varcher(10) | user's phone number with country code and area code removed |
 
 
+
 Table: ContactInfo
 
 Table stores contact info entered by the user
