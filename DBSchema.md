@@ -26,10 +26,10 @@ Table stores contact info entered by the user
 | --- | --- | --- |
 | EntryID | int | Primary key for ContactInfo |
 | UserID | int | Primary key for UserInfo, foreign key for ContactInfo |
-| FirstName | nvarchar(50) | user's first name |
-| LastName | nvarchar(50) | user's last name |
-| DOB | date | user's date of birth |
-| email | nvarchar(50) | user's email address |
-| PhoneNum_CountryCode | varchar(10) | country code for user's number |
-| PhoneNum_AreaCode | varchar(5) | area code for user's number |
-| PhoneNum | varchar(10) | user's phone number with country code and area code removed |
+| FirstName | nvarchar(50) | contact's first name |
+| LastName | nvarchar(50) | contact's last name |
+| DOB | date | contact's date of birth |
+| email | nvarchar(50) | contact's email address |
+| PhoneNum_CountryCode | varchar(10) | country code for contact's number |
+| PhoneNum_AreaCode | varchar(5) | area code for contact's number |
+| PhoneNum | varchar(10) | contact's phone number with country code and area code removed |
