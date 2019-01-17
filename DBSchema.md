@@ -15,8 +15,7 @@ Table stores directory info and login credentials for each user.
 | email | nvarchar(50) | user's email address |
 | PhoneNum_CountryCode | varchar(10) | country code for user's number |
 | PhoneNum_AreaCode | varchar(5) | area code for user's number |
-| PhoneNum | varcher(10) | user's phone number with country code and area code removed |
-
+| PhoneNum | varchar(10) | user's phone number with country code and area code removed |
 
 
 Table: ContactInfo
@@ -33,4 +32,4 @@ Table stores contact info entered by the user
 | email | nvarchar(50) | user's email address |
 | PhoneNum_CountryCode | varchar(10) | country code for user's number |
 | PhoneNum_AreaCode | varchar(5) | area code for user's number |
-| PhoneNum | varcher(10) | user's phone number with country code and area code removed |
+| PhoneNum | varchar(10) | user's phone number with country code and area code removed |
