@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcrypt");
-const fb = require('fb');
-const db = fb.firestore();
+// const fb = require('fb');
+// const db = fb.firestore();
 
 /* GET register page. */
 router.get('/', (req, res) => {
