@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcrypt");
-// const fb = require('fb');
-// const db = fb.firestore();
+
+const mongo = require("./mongo");
 
 /* GET register page. */
 router.get('/', (req, res) => {
     console.log("in the router.get");
     res.render('register', { hasError: false });
 });
+
+// TODO: refactor this to use Mongoose
+// connection string can be accessed by using "mongo.ConnectionString"
 
 /* time to make an account */
 router.post('/', function(req, res) {
