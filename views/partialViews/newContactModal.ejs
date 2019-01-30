@@ -1,0 +1,53 @@
+<div class="modal" id="newContactModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Create New Contact</p>
+            <button class="delete" aria-label="close" onclick="toggleModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form>
+                <form action="/" method="POST">
+                    <div class="field is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">First Name</label>
+                            <input class="input is-expanded" type="text" name="firstName" id="firstName" placeholder="John" autofocus="" required>
+                        </div>
+
+                        <div class="control is-expanded">
+                            <label class="label">Last Name</label>
+                            <input class="input is-expanded" type="text" name="lastName" id="lastName" placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <label class="label">First Name</label>
+                            <input class="input is-expanded" type="text" name="firstName" id="firstName" placeholder="John" autofocus="" required>
+                        </div>
+
+                        <div class="control is-expanded">
+                            <label class="label">Last Name</label>
+                            <input class="input is-expanded" type="text" name="lastName" id="lastName" placeholder="Doe">
+                        </div>
+                    </div>
+                </form>
+            </form>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save</button>
+            <button class="button" onclick="toggleModal()">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+<script>
+    function toggleModal() {
+        const modal = $("#newContactModal")
+
+        if (modal.hasClass("is-active"))
+            modal.removeClass("is-active");
+        else
+            modal.addClass("is-active");
+    }
+</script>

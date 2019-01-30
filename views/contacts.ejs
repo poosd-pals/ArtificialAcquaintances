@@ -17,7 +17,10 @@
 </head>
 
 <body>
-<section class="hero is-primary is-bold">
+
+<%- include('partialViews/newContactModal'); %>
+
+<section class="hero is-dark is-bold">
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
@@ -31,15 +34,32 @@
 </section>
 
 <div class="container">
-    <p>
-        <button class="btn btn-success btn-block" type="button" data-toggle="collapse" data-target="#newContact" aria-expanded="false" aria-controls="newContact">
-            Button with data-target
-        </button>
-    <div class="collapse" id="newContact">
-        <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    <div class="level" display="block" style="margin-top: 1.5rem">
+        <div class="level-item level-right">
+            <form action="/search" method="POST">
+                <div class="field has-addons">
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Search for contact...">
+                    </p>
+                    <p class="control">
+                        <button class="button is-primary">
+                            Go
+                        </button>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
+    <div class="level">
+        <div class="level-item level-right">
+            <button class="btn btn-success" type="button" onclick="toggleModal()">
+                Create New Contact
+            </button>
+        </div>
+    </div>
+
+    <p>
+
     </p>
 
     <div class="accordion" id="accordionExample">
@@ -48,7 +68,7 @@
                 <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
-                        Collapsible Group Item #1
+                        Shauna Hyppolite
                     </button>
                 </h2>
             </div>
@@ -70,7 +90,7 @@
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                             data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
+                        Barack Obama
                     </button>
                 </h2>
             </div>
@@ -91,7 +111,7 @@
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                             data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                        Mr. Safa Ship
                     </button>
                 </h2>
             </div>
@@ -115,5 +135,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </body>
 </html>
