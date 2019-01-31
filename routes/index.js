@@ -1,13 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 
 const bcrypt = require("bcrypt");
 
-// TODO: refactor firestore usages to MongoDB
-// we need to nuke this firebase stuff
-// const fb = require('fb');
-// const db = fb.firestore();
-// db.settings({ timestampsInSnapshots: true});
+User = require('./schemas.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,7 +18,49 @@ router.get('/', function(req, res, next) {
 });
 
 /* login attempt */
-router.post('/', function(req, res) {
+router.post('/login', function(req, res) {
+	mongoose.connect(url, (err) => {
+		if(err) {
+			mongoose.disconnect();
+			throw err;
+		}
+
+		User.findOne({
+			username: req.body.email
+		}, (err, user) => {
+			if(err) {
+				mongoose.disconnect();
+				throw err;
+			}
+
+			if(!user) {
+				req.render("admin", {
+					msg: "No user with email <${req.body.email}> exists!"
+				});
+				
+				mongoose.disconnect();
+				return;
+			}
+
+			user.comparePassword(req.body.password, (err, isMatch) => {
+				if(err) {
+					mongoose.disconnect();
+					throw err;
+				}
+
+				if(isMatch)
+                    // TODO: add user data to session
+					res.render('contacts', { msg: ""});
+				else
+					res.render('', { msg: ""});
+
+				mongoose.disconnect;
+			});
+		});
+	});
+});
+
+	/*
     var usersRef = db.collection('users');
     var loginQueryRef = usersRef.where('email', '==', req.body.email);
 
@@ -50,7 +89,6 @@ router.post('/', function(req, res) {
         .catch(err => {
             // TODO: handle error
         });
-
-});
+	*/
 
 module.exports = router;
