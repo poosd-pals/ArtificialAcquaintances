@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcrypt");
 
-const mongo = require("./mongo");
+//const mongo = require("./mongo");
 
 /* GET register page. */
 router.get('/', (req, res) => {

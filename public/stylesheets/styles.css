@@ -19,3 +19,34 @@ p {
 p.subtitle {
     padding-top: 1rem;
 }
+
+p.left {
+    float:left;
+}
+
+p.contact-info {
+    padding-left: 1%;
+    padding-top: .9em;
+    padding-bottom: 1em;
+}
+
+#accordionExample.accordion {
+    margin-bottom: 5em;
+}
+
+.btn.btn-link.nounderline {
+    text-decoration: none;
+}
+
+.container.image {
+    float: left;
+    width: 15%;
+    height: 100%;
+    padding: 1em 2em 2em 1em;
+}
+
+.container.contact-info {
+    float:left;
+    width: 85%;
+}
+
