@@ -6,6 +6,9 @@ const bcrypt = require("bcrypt");
 
 User = require('./schemas.js');
 
+const mongo = require("./mongo.json");
+const url = mongo.ConnectionString;
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var error = req.session.hasError;
@@ -18,7 +21,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* login attempt */
-router.post('/login', function(req, res) {
+router.post('/', function(req, res) {
+
 	mongoose.connect(url, (err) => {
 		if(err) {
 			mongoose.disconnect();
@@ -34,11 +38,15 @@ router.post('/login', function(req, res) {
 			}
 
 			if(!user) {
-				req.render("admin", {
-					msg: "No user with email <${req.body.email}> exists!"
-				});
+				console.log("we connected!");
+
+				req.session.hasError = true;
+				req.session.errorMessage = "User with that email does not exist!";
 				
 				mongoose.disconnect();
+
+				res.redirect('/');
+
 				return;
 			}
 
@@ -48,47 +56,24 @@ router.post('/login', function(req, res) {
 					throw err;
 				}
 
-				if(isMatch)
-                    // TODO: add user data to session
-					res.render('contacts', { msg: ""});
-				else
-					res.render('', { msg: ""});
 
-				mongoose.disconnect;
+				if(isMatch) {
+					// TODO: add user data to session
+					mongoose.disconnect;
+
+					res.redirect('/contacts');
+				}
+				else {
+					req.session.hasError = true;
+					req.session.errorMessage = "Incorrect password!";
+
+					mongoose.disconnect;
+
+					res.redirect('/');
+				}
 			});
 		});
 	});
 });
-
-	/*
-    var usersRef = db.collection('users');
-    var loginQueryRef = usersRef.where('email', '==', req.body.email);
-
-    loginQueryRef.get()
-        .then(snapshot => {
-            if (snapshot.empty) {
-                req.session.hasError = true;
-                req.session.errorMessage = `No user with email <${req.body.email}> exists!`;
-                res.redirect('/');
-            } else {
-                console.log("email exists! checking password");
-                const doc = snapshot.docs[0];
-                console.log(doc);
-                const passwordMatches = bcrypt.compareSync(req.body.password, doc.get('password'));
-                if (passwordMatches) {
-                    // TODO: add user data to session
-                    res.redirect("/contacts");
-                }
-                else {
-                    req.session.hasError = true;
-                    req.session.errorMessage = `Incorrect Password`;
-                    res.redirect('/');
-                }
-            }
-        })
-        .catch(err => {
-            // TODO: handle error
-        });
-	*/
 
 module.exports = router;
