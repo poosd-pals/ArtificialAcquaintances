@@ -12,6 +12,7 @@ const contactManagerRouter = require('./routes/contacts');
 
 const app = express();
 const port = 9001;
+var url = "mongodb+srv://admin:admin@cluster0-hbufu.mongodb.net/artificial_acquaintances?retryWrites=true";
 
 // ------ bodyparser
 var bodyParser = require('body-parser');

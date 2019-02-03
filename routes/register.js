@@ -1,47 +1,46 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+
 const bcrypt = require("bcrypt");
 
+// connection string can be accessed by using "mongo.ConnectionString"
 const mongo = require("./mongo");
+const url = mongo.ConnectionString;
 
-/* GET register page. */
+// GET register page.
 router.get('/', (req, res) => {
     console.log("in the router.get");
-    res.render('register', { hasError: false });
+	var error = req.session.hasError;
+	var errorMsg = req.session.errorMessage;
+	var regSuccess = req.session.registrationHasSucceded;
+
+    res.render('register', { hasError: error, errorMessage: errorMsg, hasRegisterSuccess: regSuccess });
 });
 
-// TODO: refactor this to use Mongoose
-// connection string can be accessed by using "mongo.ConnectionString"
+// time to make an account
+router.post('/', (req, res) => {
+	mongoose.connect(url, (err) => {
+		if (err) {
+			mongoose.disconnect();
+			throw err;
+		}
 
-/* time to make an account */
-router.post('/', function(req, res) {
-    const SALT_FACTOR = 10;
+		var user = User({
+			username: req.body.email,
+			password: req.body.password
+		});
 
-    let userExists = db.collection('users').where('email', '==', req.body.email).get()
-        .then(snapshot => {
-            // only add new user if it doesn't exist!
-            if (snapshot.empty) {
-                let addUser = db.collection('users').add({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, SALT_FACTOR)
-                }).then(() => {
-                    req.session.registrationHasSucceded = true;
-                    res.redirect('/');
-                }).catch((err) => {
-                    console.log(err);
-                    req.session.hasError = true;
-                    req.session.errorMessage = "error creating account! please try again"
-                });
-            }
-            else {
-                res.render('register', { hasError: true, errorMessage: "email already in use!"});
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            req.session.hasError = true;
-            req.session.errorMessage = "error creating account! please try again";
-        });
+		user.save((err) => {
+			if (err) {
+				mongoose.disconnect();
+				throw err;
+			}
+
+			req.session.hasRegisterSuccess = true;
+			res.redirect('/');
+		});
+	});
 });
+
 module.exports = router;
