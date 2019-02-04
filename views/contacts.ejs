@@ -1,63 +1,91 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 
-<!-- TODO: move all of this header stuff into a separate file to include via EJS; Create footer -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
+</head>
 
-<!--<head>-->
-    <!--<meta charset="utf-8">-->
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <!--<title>Contact Manager</title>-->
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">-->
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>-->
-<!--</head>-->
+<body>
 
-<!--<body>-->
+<%- include('partialViews/newContactModal'); %>
 
-<!--<section class="hero is-primary is-bold">-->
-    <!--<div class="hero-body">-->
-        <!--<div class="container">-->
-            <!--<h1 class="title">-->
-                <!--Contact Manager-->
-            <!--</h1>-->
-            <!--<h2 class="subtitle">-->
-                <!--<%=`Welcome, ${name}!`%>-->
-            <!--</h2>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</section>-->
+<section class="hero is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Contact Manager
+            </h1>
+            <h2 class="subtitle">
+                <%=`Welcome, ${name}!`%>
+            </h2>
+        </div>
+    </div>
+</section>
 
-<!--<div class="container contactManager">-->
-    <!--<div class="columns">-->
-        <!--<div class="column is-one-third">-->
-            <!--<% for (var i = 0; i < 10; i++) { %>-->
-                <!--<div class="box" style="margin: .75rem 0rem 0rem 0rem">-->
-                <!--<span>-->
-                    <!--<span class="icon">-->
-                        <!--<i class="fas fa-user"></i>-->
-                    <!--</span>-->
-                    <!--CONTACT NAME HERE-->
-                <!--</span>-->
-                <!--</div>-->
-            <!--<% } %>-->
-        <!--</div>-->
+<div class="container">
+    <div class="level" display="block" style="margin-top: 1.5rem">
+        <div class="level-item level-right">
+            <form action="/search" method="GET">
+                <div class="field has-addons">
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Search for contact...">
+                    </p>
+                    <p class="control">
+                        <button class="button is-primary" onclick="doSearch()">
+                            Go
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="level">
+        <div class="level-item level-right">
+            <button class="btn btn-success" type="button" onclick="toggleModal()">
+                + Add New Contact
+            </button>
+        </div>
+    </div>
 
-        <!--<div class="column is-gapless">-->
-            <!--<article class="message is-info">-->
-                <!--<div class="message-header">-->
-                    <!--Info-->
-                    <!--<button class="delete"></button>-->
-                <!--</div>-->
-                <!--<div class="message-body">-->
-                    <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat-->
-                    <!--ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et-->
-                    <!--dictum felis venenatis efficitur. Aenean ac eleifend lacus, in mollis lectus. Donec sodales, arcu et-->
-                    <!--sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna,-->
-                    <!--vehicula et sem eget, facilisis sodales sem.-->
-                <!--</div>-->
-            <!--</article>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--</body>-->
+    <p>
+
+    </p>
+
+    <div class="accordion" id="accordionExample">
+        <%- include('partialViews/singleContact', { index: 0, name: "Shauna Hyppolite", phoneNumber: "(432)-443-6541", email: "shauna@hyppolite.com", address: "3200 N Alafaya Trail, Orlando FL 32826" }); %>
+        <%- include('partialViews/singleContact', { index: 1, name: "Barack Obama", phoneNumber: "(465)-443-6541", email: "obama@president.com", address: "1600 Penn Ave NW, Washington, DC 20500" }); %>
+        <%- include('partialViews/singleContact', { index: 2, name: "Mr. Safa Ship", phoneNumber: "(432)-443-6541", email: "safa@pirate.com", address: "1015 N America Way, Miami, FL 33132" }); %>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+    function doSearch() {
+        
+    }
+</script>
+
+</body>
+</html>
