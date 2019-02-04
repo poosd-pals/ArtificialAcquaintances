@@ -1,6 +1,9 @@
 # IntelliJ
 .idea/
 
+# config files
+routes/mongo.json
+
 # OS X
 .DS_Store*
 Icon?
