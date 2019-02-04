@@ -13,7 +13,7 @@ const url = mongo.ConnectionString;
 router.get('/', function(req, res, next) {
     var error = req.session.hasError;
     var errorMsg = req.session.errorMessage;
-    var regSuccess = req.session.registrationHasSucceded;
+    var regSuccess = req.session.hasRegisterSuccess;
 
     req.session.destroy();
 

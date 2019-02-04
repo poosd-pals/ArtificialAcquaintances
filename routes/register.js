@@ -13,9 +13,8 @@ router.get('/', (req, res) => {
     console.log("in the router.get");
 	var error = req.session.hasError;
 	var errorMsg = req.session.errorMessage;
-	var regSuccess = req.session.registrationHasSucceded;
 
-    res.render('register', { hasError: error, errorMessage: errorMsg, hasRegisterSuccess: regSuccess });
+    res.render('register', { hasError: error, errorMessage: errorMsg});
 });
 
 // time to make an account
@@ -26,20 +25,41 @@ router.post('/', (req, res) => {
 			throw err;
 		}
 
-		var user = User({
-			name: req.body.name,
-			email: req.body.email,
-			password: req.body.password
-		});
-
-		user.save((err) => {
+		User.findOne({
+			email: req.body.email
+		}, (err, user) => {
 			if (err) {
 				mongoose.disconnect();
 				throw err;
 			}
 
-			req.session.hasRegisterSuccess = true;
-			res.redirect('/');
+			// only register account if no user with that email exists
+			if (!user) {
+				var user = User({
+					name: req.body.name,
+					email: req.body.email,
+					password: req.body.password
+				});
+
+				user.save((err) => {
+					if (err) {
+						mongoose.disconnect();
+						throw err;
+					}
+
+					mongoose.disconnect();
+
+					req.session.hasRegisterSuccess = true;
+					res.redirect('/');
+				});
+			}
+			else {
+				mongoose.disconnect();
+
+				req.session.hasError = true;
+				req.session.errorMessage = "Account with that email already exists!"
+				res.redirect('/register');
+			}
 		});
 	});
 });
