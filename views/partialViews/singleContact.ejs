@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-header" id="<%=`header-${index}`%>">
+        <button class="btn btn-link btn-block nounderline btn-contact collapsed" type="button" data-toggle="collapse" data-target="<%=`#accordian-${index}`%>" aria-expanded="false" aria-controls="<%= `accordian-${index}`%>">
+            <h2 class="card-title">
+                <%=`${name}`%>
+            </h2>
+        </button>
+    </div>
+
+    <div id="<%=`accordian-${index}`%>" class="collapse" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="columns">
+                <div class="column is-one-fifth">
+                    <figure class="image is-96x96">
+                        <i class="fa fa-7x fa-user-circle" aria-hidden="true"></i>
+                    </figure>
+                </div>
+                <div class="column is-two-fifths left">
+                    <div class="container contact-info">
+                        <ul>
+                            <li>
+                                <i class="fa fa-address-card" aria-hidden="true"></i>
+                                <p class="contact-info" style="display: inline-block">
+                                    <%= `${name}` %>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                <p class="contact-info" style="display: inline-block">
+                                    <%= `${phoneNumber}` %>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-square" aria-hidden="true"></i>
+                                <p class="contact-info" style="display: inline-block">
+                                    <%= `${email}` %>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column is-two-fifths right">
+                    <div class="container contact-info">
+                        <ul>
+                            <li>
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
+                                <p class="contact-info" style="display: inline-block">
+                                    <%= `${address}` %>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="delete-contact"><a href="#" class="has-text-danger">Delete Contact</a></p>
+        </div>
+    </div>
+</div>
