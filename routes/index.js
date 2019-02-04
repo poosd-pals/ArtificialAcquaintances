@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 		}
 
 		User.findOne({
-			username: req.body.email
+			email: req.body.email
 		}, (err, user) => {
 			if(err) {
 				mongoose.disconnect();
@@ -50,12 +50,16 @@ router.post('/', function(req, res) {
 				return;
 			}
 
+			console.log(user._id);
+
 			user.comparePassword(req.body.password, (err, isMatch) => {
 				if(err) {
 					mongoose.disconnect();
 					throw err;
 				}
 
+				console.log(req.body.password);
+				console.log(isMatch);
 
 				if(isMatch) {
 					// TODO: add user data to session
