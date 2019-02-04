@@ -85,3 +85,7 @@ figure.image.is-96x96 {
     margin-left: auto;
     margin-right: auto;
 }
+.delete-contact {
+    text-align: right;
+    font-weight: 400;
+}
