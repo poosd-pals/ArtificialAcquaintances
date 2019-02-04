@@ -63,6 +63,7 @@ router.post('/', function(req, res) {
 
 				if(isMatch) {
 					// TODO: add user data to session
+					req.session.uid = user._id;
 					mongoose.disconnect;
 
 					res.redirect('/contacts');
