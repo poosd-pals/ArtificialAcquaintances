@@ -10,11 +10,17 @@ const url = mongo.ConnectionString;
 
 // GET register page.
 router.get('/', (req, res) => {
-    console.log("in the router.get");
-	var error = req.session.hasError;
-	var errorMsg = req.session.errorMessage;
+	if (req.session.uid) {
+		req.redirect("/contacts");
+	}
+	else {
+		var error = req.session.hasError;
+		var errorMsg = req.session.errorMessage;
 
-    res.render('register', { hasError: error, errorMessage: errorMsg});
+		req.session.destroy();
+
+		res.render('register', {hasError: error, errorMessage: errorMsg});
+	}
 });
 
 // time to make an account

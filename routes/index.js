@@ -11,13 +11,19 @@ const url = mongo.ConnectionString;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    var error = req.session.hasError;
-    var errorMsg = req.session.errorMessage;
-    var regSuccess = req.session.hasRegisterSuccess;
+	if (req.session.uid) {
+		console.log("uid is not blank!");
+		res.redirect("/contacts");
+	}
+	else {
+		var error = req.session.hasError;
+		var errorMsg = req.session.errorMessage;
+		var regSuccess = req.session.hasRegisterSuccess;
 
-    req.session.destroy();
+		req.session.destroy();
 
-    res.render('index', { hasError: error, errorMessage: errorMsg, hasRegisterSuccess: regSuccess });
+		res.render('index', {hasError: error, errorMessage: errorMsg, hasRegisterSuccess: regSuccess});
+	}
 });
 
 /* login attempt */

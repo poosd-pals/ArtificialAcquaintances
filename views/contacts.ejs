@@ -34,7 +34,12 @@
 </section>
 
 <div class="container">
-    <div class="level" display="block" style="margin-top: 1.5rem">
+    <div class="level" style="margin-top: 1.5rem">
+        <div class="level-item level-left">
+            <a class="button is-primary" href="/contacts/logout">
+                Logout
+            </a>
+        </div>
         <div class="level-item level-right">
             <form action="/search" method="GET">
                 <div class="field has-addons">
@@ -42,7 +47,7 @@
                         <input class="input" type="text" placeholder="Search for contact...">
                     </p>
                     <p class="control">
-                        <button class="button is-primary" onclick="doSearch()">
+                        <button class="button is-success" onclick="doSearch()">
                             Go
                         </button>
                     </p>
@@ -62,10 +67,15 @@
 
     </p>
 
-    <div class="accordion" id="accordionExample">
-        <%- include('partialViews/singleContact', { index: 0, name: "Shauna Hyppolite", phoneNumber: "(432)-443-6541", email: "shauna@hyppolite.com", address: "3200 N Alafaya Trail, Orlando FL 32826" }); %>
-        <%- include('partialViews/singleContact', { index: 1, name: "Barack Obama", phoneNumber: "(465)-443-6541", email: "obama@president.com", address: "1600 Penn Ave NW, Washington, DC 20500" }); %>
-        <%- include('partialViews/singleContact', { index: 2, name: "Mr. Safa Ship", phoneNumber: "(432)-443-6541", email: "safa@pirate.com", address: "1015 N America Way, Miami, FL 33132" }); %>
+    <div class="accordion" id="contactsAccordion">
+        <% if (contacts.length == 0) { %>
+            <%= "No contacts found!" %>
+        <% } else {%>
+            <% for (var i = 0; i < contacts.length; i++ ) { %>
+                <% const contact = contacts[i]; %>
+                <%- include('partialViews/singleContact', { index: i, name: contact.name, phoneNumber: contact.phoneNumber, email: contact.email, address: "3200 N Alafaya Trail, Orlando FL 32826" }); %>
+            <% } %>
+        <% }%>
     </div>
 
 
