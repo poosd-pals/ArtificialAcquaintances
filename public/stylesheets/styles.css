@@ -89,3 +89,9 @@ figure.image.is-96x96 {
     text-align: right;
     font-weight: 400;
 }
+/* Removes spin control on number input fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
