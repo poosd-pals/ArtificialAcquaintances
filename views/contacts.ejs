@@ -23,23 +23,25 @@
 <section class="hero is-dark is-bold">
     <div class="hero-body">
         <div class="container">
+                <div class="level-item level-right">
+                        <a class="button is-light" href="/contacts/logout">
+                            Logout
+                        </a>
+                </div>
             <h1 class="title">
                 Contact Manager
             </h1>
             <h2 class="subtitle">
                 <%=`Welcome, ${name}!`%>
             </h2>
+            
         </div>
     </div>
 </section>
 
 <div class="container">
     <div class="level" style="margin-top: 1.5rem">
-        <div class="level-item level-left">
-            <a class="button is-primary" href="/contacts/logout">
-                Logout
-            </a>
-        </div>
+        
         <div class="level-item level-right">
             <form action="/search" method="GET">
                 <div class="field has-addons">
