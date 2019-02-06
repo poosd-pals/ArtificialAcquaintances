@@ -4,10 +4,21 @@ var mongoose = require('mongoose'),
     SALT_WORK_FACTOR = 10;
 
 var ContactsSchema = new mongoose.Schema({
-    name: String,
+    firstName: String,
+    lastName: String,
     phoneNumber: String,
-    email: String
+    email: String,
+    address: {
+        lineOne: String,
+        lineTwo: String,
+        city: String,
+        state: String,
+        zipcode: String
+    }
 });
+
+// allows for searching by first and last name
+ContactsSchema.index({firstName: 'text', lastName: 'text'});
 
 var UserSchema = new mongoose.Schema({  
   name: { type: String, required: true },
@@ -16,6 +27,7 @@ var UserSchema = new mongoose.Schema({
   contacts: [ContactsSchema]
 });
 
+// Hashes password when saving password
 UserSchema.pre('save', function(next) {
     var user = this;
 
