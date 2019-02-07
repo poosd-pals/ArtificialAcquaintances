@@ -43,6 +43,10 @@ p.contact-info {
     margin-bottom: 1.5%;
 }
 
+.column.logout{
+    margin-top: 2%;
+}
+
 .container.image {
     float: left;
     width: 15%;

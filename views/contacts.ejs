@@ -28,7 +28,7 @@
 <section class="hero is-dark is-bold">
     <div class="hero-body">
         <div class="container">
-            <div class="columns">
+            <div style="display: flex; justify-content: space-between">
                 <div class="column">
                     <h1 class="title">
                         Contact Manager
@@ -37,7 +37,7 @@
                         <%=`Welcome, ${name}!`%>
                     </h2>
                 </div>
-                <div class="column level-item level-right">
+                <div class="column logout">
                     <a class="button is-light is-pulled-right" href="/contacts/logout">
                         Logout
                     </a>
@@ -48,14 +48,31 @@
 </section>
 
 <div class="container">
-    <div class="level" style="margin-top: 1.5rem">
-        <div class="level-item level-left">
+    <div class="level" style="margin-top: 1.5rem; display: flex; justify-content: space-between">
+        <!--<div class="level-item level-left">
             <button class="btn btn-success" type="button" onclick="toggleModal()">
                 + Add New Contact
             </button>
         </div>
 
         <div class="level-item level-right">
+            <div class="field has-addons">
+                <p class="control">
+                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
+                </p>
+                <p class="control">
+                    <button class="button is-success" onclick="doSearch(this)" required>
+                        Go
+                    </button>
+                </p>
+            </div>
+        </div>-->
+        <div>
+            <button class="btn btn-success" type="button" onclick="toggleModal()">
+                + Add New Contact
+            </button>
+        </div>
+        <div>
             <div class="field has-addons">
                 <p class="control">
                     <input class="input" id="searchField" type="text" placeholder="Search for contact...">
