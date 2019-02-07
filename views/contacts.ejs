@@ -49,27 +49,23 @@
 
 <div class="container">
     <div class="level" style="margin-top: 1.5rem">
-        
-        <div class="level-item level-right">
-            <form action="/search" method="GET">
-                <div class="field has-addons">
-                    <p class="control">
-                        <input class="input" type="text" placeholder="Search for contact...">
-                    </p>
-                    <p class="control">
-                        <button class="button is-success" onclick="doSearch()">
-                            Go
-                        </button>
-                    </p>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="level">
-        <div class="level-item level-right">
+        <div class="level-item level-left">
             <button class="btn btn-success" type="button" onclick="toggleModal()">
                 + Add New Contact
             </button>
+        </div>
+
+        <div class="level-item level-right">
+            <div class="field has-addons">
+                <p class="control">
+                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
+                </p>
+                <p class="control">
+                    <button class="button is-success" onclick="doSearch(this)" required>
+                        Go
+                    </button>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -79,15 +75,28 @@
         <% } else {%>
             <% for (var i = 0; i < contacts.length; i++ ) { %>
                 <% const contact = contacts[i]; %>
-                <%- include('partialViews/singleContact', { index: i, name: contact.name, phoneNumber: contact.phoneNumber, email: contact.email, address: "3200 N Alafaya Trail, Orlando FL 32826" }); %>
+                <%- include('partialViews/singleContact', { index: i, contact: contacts[i] }); %>
             <% } %>
         <% }%>
     </div>
 </div>
 
 <script>
-    function doSearch() {
-        
+    function doSearch(e) {
+        var parameters = { search: $("#searchField").val() };
+
+        if (!parameters.search) {
+            $("#searchField").addClass("is-danger");
+            return;
+        }
+
+        $("#searchField").removeClass("is-danger");
+
+        $.get( '/contacts/search', parameters, (data) => {
+            console.log("somehow returned in the ajax call!");
+            console.log(data);
+        });
+            // $('#results').html(data);
     }
 </script>
 

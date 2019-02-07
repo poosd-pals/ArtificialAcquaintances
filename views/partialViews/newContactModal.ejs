@@ -7,56 +7,56 @@
         </header>
         <section class="modal-card-body">
             <form>
-                <form action="/" method="POST">
+                <form action="/addContact" method="POST">
                     <div class="field is-grouped">
                         <div class="control is-expanded">
                             <label class="label">First Name</label>
-                            <input class="input is-expanded" type="text" name="firstName" id="firstName" placeholder="First Name" autofocus="" required>
+                            <input class="input is-expanded" type="text" name="firstName" id="newFirstName" placeholder="First Name" autofocus="" required>
                         </div>
 
                         <div class="control is-expanded">
                             <label class="label">Last Name</label>
-                            <input class="input is-expanded" type="text" name="lastName" id="lastName" placeholder="Last Name">
+                            <input class="input is-expanded" type="text" name="lastName" id="newLastName" placeholder="Last Name">
                         </div>
                     </div>
 
                     <div class="field is-grouped">
                         <div class="control is-expanded">
                             <label class="label">Email</label>
-                            <input class="input is-expanded" type="email" name="email" id="email" placeholder="Email" autofocus="">
+                            <input class="input is-expanded" type="email" name="email" id="newEmail" placeholder="Email" autofocus="">
                         </div>
 
                         <div class="control is-expanded">
                             <label class="label">Phone Number</label>
-                            <input class="input is-expanded" type="number" name="phone" id="phone" pattern="[23456789]" onKeyPress="if(this.value.length==9) return false;" minlength="9" maxlength="9" placeholder="Phone Number">
+                            <input class="input is-expanded" type="number" name="phone" id="newPhone" pattern="[23456789]" onKeyPress="if(this.value.length==9) return false;" minlength="9" maxlength="9" placeholder="Phone Number">
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="control is-expanded">
                             <label class="label">Address</label>
-                            <input class="input is-expanded" type="address" name="address" id="address" placeholder="Street">
+                            <input class="input is-expanded" type="address" name="addressTwo" id="newAddressOne" placeholder="Street">
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="control is-expanded">
-                            <input class="input is-expanded" type="address" name="address" id="address" placeholder="Apt or Suite">
+                            <input class="input is-expanded" type="address" name="addressTwo" id="newAddressTwo" placeholder="Apt or Suite">
                         </div>
                     </div>
 
                     <div class="field is-grouped">
                         <div class="control is-expanded">
                             <label class="label">City</label>
-                            <input class="input is-expanded" type="text" name="address" id="address" placeholder="City">
+                            <input class="input is-expanded" type="text" name="city" id="newCity" placeholder="City">
                         </div>
                         <div class="control is-expanded">
                             <label class="label">State</label>
-                            <input class="input is-expanded" type="text" name="address" id="address" placeholder="State">
+                            <input class="input is-expanded" type="text" name="state" id="newState" placeholder="State">
                         </div>
                         <div class="control is-expanded">
                             <label class="label">Zip Code</label>
-                            <input class="input is-expanded" type="number" onKeyPress="if(this.value.length==5) return false;" name="address" pattern="[0-9]" min="5" max="5" id="address" placeholder="Zip Code">
+                            <input class="input is-expanded" type="number" onKeyPress="if(this.value.length===5) return false;" name="zipcode" pattern="[0-9]" min="5" max="5" id="newZipcode" placeholder="Zip Code">
                         </div>
                     </div>
 
