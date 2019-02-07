@@ -70,28 +70,30 @@ router.get('/search', (req, res, next) => {
 });
 
 router.post('/add', (req, res, next) => {
-	// TODO: add contact from request body
-	// mongoose.connect(url, (err) => {
-	// 	// User.findOne({
-	// 	// 	_id: "5c58a9e5c9d4070c2147830a"
-	// 	// }, (err, user) => {
-	// 	var contact = Contact({
-	// 		daddy: "5c58a9e5c9d4070c2147830a",
-	// 		firstName: "Sean",
-	// 		lastName: "Zoom",
-	// 		phoneNumber: "4732683424",
-	// 		email: "mail@mail.com",
-	// 		addressLineOne: "String st",
-	// 		addressLineTwo: "apartment 31",
-	// 		city: "orlando",
-	// 		state: "String",
-	// 		zipcode: "23424"
-	// 	});
-	// 	contact.save((err) =>{
-	// 		mongoose.disconnect();
-	//
-	// 	});
-	// });
+	mongoose.connect(url, (err) => {
+		var contact = Contact({
+			daddy: req.session.uid,
+			firstName: req.body.newFirstName,
+			lastName: req.body.newLastName,
+			phoneNumber: req.body.newPhone,
+			email: req.body.newEmail,
+			addressLineOne: req.body.newAddressOne,
+			addressLineTwo: req.body.newAddressTwo,
+			city: req.body.newCity,
+			state: req.body.newState,
+			zipcode: req.body.newZipcode
+	});
+
+	contact.save((err) =>{
+		if(err) {
+			mongoose.disconnect();
+			throw err;
+		}
+
+		mongoose.disconnect();
+		res.redirect("/contacts");
+		});
+	});
 });
 
 module.exports = router;
