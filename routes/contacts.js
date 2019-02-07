@@ -55,8 +55,8 @@ router.get('/search', (req, res, next) => {
 		if (err) throw err;
 
 
-		User.find({
-			_id: req.session.uid,
+		Contact.find({
+			daddy: req.session.uid,
 			$text: {$search: search}
 		}).exec((err, docs) => {
 			mongoose.disconnect();
@@ -70,6 +70,7 @@ router.get('/search', (req, res, next) => {
 });
 
 router.post('/add', (req, res, next) => {
+    console.log(req.body);
 	mongoose.connect(url, (err) => {
 		var contact = Contact({
 			daddy: req.session.uid,
@@ -82,17 +83,17 @@ router.post('/add', (req, res, next) => {
 			city: req.body.newCity,
 			state: req.body.newState,
 			zipcode: req.body.newZipcode
-	});
+	    });
 
-	contact.save((err) =>{
-		if(err) {
-			mongoose.disconnect();
-			throw err;
-		}
+        contact.save((err) =>{
+            if(err) {
+                mongoose.disconnect();
+                throw err;
+            }
 
-		mongoose.disconnect();
-		res.redirect("/contacts");
-		});
+            mongoose.disconnect();
+            res.redirect("/contacts");
+        });
 	});
 });
 
