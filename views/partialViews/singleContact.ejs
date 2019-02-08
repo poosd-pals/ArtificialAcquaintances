@@ -2,7 +2,7 @@
     <div class="card-header" id="<%=`header-${index}`%>">
         <button class="btn btn-link btn-block nounderline btn-contact collapsed" type="button" data-toggle="collapse" data-target="<%=`#accordian-${index}`%>" aria-expanded="false" aria-controls="<%= `accordian-${index}`%>">
             <h2 class="card-title">
-                <%=`${name}`%>
+                <%=`${contact.firstName} ${contact.lastName}`%>
             </h2>
         </button>
     </div>
@@ -21,19 +21,19 @@
                             <li>
                                 <i class="fa fa-address-card" aria-hidden="true"></i>
                                 <p class="contact-info" style="display: inline-block">
-                                    <%= `${name}` %>
+                                    <%= `${ contact.firstName } ${contact.lastName }` %>
                                 </p>
                             </li>
                             <li>
                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                                 <p class="contact-info" style="display: inline-block">
-                                    <%= `${phoneNumber}` %>
+                                    <%= `${contact.phoneNumber}` %>
                                 </p>
                             </li>
                             <li>
                                 <i class="fa fa-envelope-square" aria-hidden="true"></i>
                                 <p class="contact-info" style="display: inline-block">
-                                    <%= `${email}` %>
+                                    <%= `${contact.email}` %>
                                 </p>
                             </li>
                         </ul>
@@ -45,7 +45,10 @@
                             <li>
                                 <i class="fa fa-address-book" aria-hidden="true"></i>
                                 <p class="contact-info" style="display: inline-block">
-                                    <%= `${address}` %>
+                                    <%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
+                                </p>
+                                <p class="contact-info" style="display: inline-block">
+                                    <%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
                                 </p>
                             </li>
                         </ul>

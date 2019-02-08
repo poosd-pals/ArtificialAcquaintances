@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 const bcrypt = require("bcrypt");
 
-User = require('./schemas.js');
+User = require('./schemas/UserSchema');
 
 const mongo = require("./mongo.json");
 const url = mongo.ConnectionString;
@@ -59,26 +59,22 @@ router.post('/', function(req, res) {
 			console.log(user._id);
 
 			user.comparePassword(req.body.password, (err, isMatch) => {
-				if(err) {
-					mongoose.disconnect();
-					throw err;
-				}
+				mongoose.disconnect();
+
+				if(err) throw err;
 
 				console.log(req.body.password);
 				console.log(isMatch);
 
 				if(isMatch) {
-					// TODO: add user data to session
 					req.session.uid = user._id;
-					mongoose.disconnect;
+					req.session.displayName = user.name;
 
 					res.redirect('/contacts');
 				}
 				else {
 					req.session.hasError = true;
 					req.session.errorMessage = "Incorrect password!";
-
-					mongoose.disconnect;
 
 					res.redirect('/');
 				}

@@ -6,66 +6,70 @@
             <button class="delete" aria-label="close" onclick="toggleModal()"></button>
         </header>
         <section class="modal-card-body">
-            <form>
-                <form action="/" method="POST">
-                    <div class="field is-grouped">
-                        <div class="control is-expanded">
-                            <label class="label">First Name</label>
-                            <input class="input is-expanded" type="text" name="firstName" id="firstName" placeholder="First Name" autofocus="" required>
-                        </div>
+            <form action="/contacts/add" method="POST">
+            <div class="field is-grouped">
+                <div class="control is-expanded">
+                    <label class="label">First Name</label>
+                    <input class="input is-expanded" type="text" name="newFirstName" id="newFirstName" placeholder="First Name" autofocus="" required>
+                </div>
 
-                        <div class="control is-expanded">
-                            <label class="label">Last Name</label>
-                            <input class="input is-expanded" type="text" name="lastName" id="lastName" placeholder="Last Name">
-                        </div>
-                    </div>
+                <div class="control is-expanded">
+                    <label class="label">Last Name</label>
+                    <input class="input is-expanded" type="text" name="newLastName" id="newLastName" placeholder="Last Name">
+                </div>
+            </div>
 
-                    <div class="field is-grouped">
-                        <div class="control is-expanded">
-                            <label class="label">Email</label>
-                            <input class="input is-expanded" type="email" name="email" id="email" placeholder="Email" autofocus="">
-                        </div>
+            <div class="field is-grouped">
+                <div class="control is-expanded">
+                    <label class="label">Email</label>
+                    <input class="input is-expanded" type="email" name="newEmail" id="newEmail" placeholder="Email" autofocus="">
+                </div>
 
+<<<<<<< HEAD
                         <div class="control is-expanded">
                             <label class="label">Phone Number</label>
-                            <input class="input is-expanded" type="tel" name="phone" id="phone" pattern="[23456789]" return false;" maxlength="10" placeholder="Phone Number">
-                            <!-- onKeyPress="if(this.value.length==10) -->
+                            <input class="input is-expanded" type="tel" name="phone" id="phone" pattern="[23456789]" onKeyPress="if(this.value.length==9) return false;" maxlength="10" placeholder="Phone Number">
                         </div>
                     </div>
+=======
+                <div class="control is-expanded">
+                    <label class="label">Phone Number</label>
+                    <input class="input is-expanded" type="number" name="newPhone" id="newPhone" pattern="[23456789]" onKeyPress="if(this.value.length==9) return false;" minlength="9" maxlength="9" placeholder="Phone Number">
+                </div>
+            </div>
+>>>>>>> 50ecaaa6c4ef52f7cef7f74ea7de42bd1026d955
 
-                    <div class="field">
-                        <div class="control is-expanded">
-                            <label class="label">Address</label>
-                            <input class="input is-expanded" type="address" name="address" id="address" placeholder="Street">
-                        </div>
-                    </div>
+            <div class="field">
+                <div class="control is-expanded">
+                    <label class="label">Address</label>
+                    <input class="input is-expanded" type="address" name="newAddressOne" id="newAddressOne" placeholder="Street">
+                </div>
+            </div>
 
-                    <div class="field">
-                        <div class="control is-expanded">
-                            <input class="input is-expanded" type="address" name="address" id="address" placeholder="Apt or Suite">
-                        </div>
-                    </div>
+            <div class="field">
+                <div class="control is-expanded">
+                    <input class="input is-expanded" type="address" name="newAddressTwo" id="newAddressTwo" placeholder="Apt or Suite">
+                </div>
+            </div>
 
-                    <div class="field is-grouped">
-                        <div class="control is-expanded">
-                            <label class="label">City</label>
-                            <input class="input is-expanded" type="text" name="address" id="address" placeholder="City">
-                        </div>
-                        <div class="control is-expanded">
-                            <label class="label">State</label>
-                            <input class="input is-expanded" type="text" name="address" id="address" placeholder="State">
-                        </div>
-                        <div class="control is-expanded">
-                            <label class="label">Zip Code</label>
-                            <input class="input is-expanded" type="number" onKeyPress="if(this.value.length==5) return false;" name="address" pattern="[0-9]" min="5" max="5" id="address" placeholder="Zip Code">
-                        </div>
-                    </div>
-
-                </form>
-            </form>
+            <div class="field is-grouped">
+                <div class="control is-expanded">
+                    <label class="label">City</label>
+                    <input class="input is-expanded" type="text" name="newCity" id="newCity" placeholder="City">
+                </div>
+                <div class="control is-expanded">
+                    <label class="label">State</label>
+                    <input class="input is-expanded" type="text" name="newState" id="newState" placeholder="State">
+                </div>
+                <div class="control is-expanded">
+                    <label class="label">Zip Code</label>
+                    <input class="input is-expanded numbersOnly" type="number" return false;" name="newZipcode" pattern="[0-9]" min="5" max="5" id="newZipcode" placeholder="Zip Code">
+                </div>
+            </div>
         </section>
         <footer class="modal-card-foot">
             <button class="button is-success">Save</button>
+        </form>
             <button class="button" onclick="toggleModal()">Cancel</button>
         </footer>
     </div>

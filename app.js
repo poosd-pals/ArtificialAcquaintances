@@ -40,6 +40,8 @@ app.use(session({
     hasError: false,
     errorMessage: "",
     hasRegisterSuccess: false,
+    uid: "",
+    displayName: ""
     }));
 
 app.use('/', indexRouter);

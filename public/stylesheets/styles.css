@@ -30,8 +30,8 @@ p.contact-info {
     padding-bottom: 1%;
 }
 
-#accordionExample.accordion {
-    margin-bottom: 5em;
+.accordion {
+    margin-bottom: 5%;
 }
 
 .btn.btn-link.nounderline {
@@ -41,6 +41,10 @@ p.contact-info {
 
 .card-body {
     margin-bottom: 1.5%;
+}
+
+.column.logout{
+    margin-top: 2%;
 }
 
 .container.image {

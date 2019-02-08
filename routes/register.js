@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 
 const bcrypt = require("bcrypt");
 
+User = require('./schemas/UserSchema');
+
 // connection string can be accessed by using "mongo.ConnectionString"
 const mongo = require("./mongo");
 const url = mongo.ConnectionString;

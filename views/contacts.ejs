@@ -1,18 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Contact Manager</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- bootstrap/fontawesome/bulma css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Manager</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+
+    <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
 </head>
 
@@ -23,7 +28,7 @@
 <section class="hero is-dark is-bold">
     <div class="hero-body">
         <div class="container">
-            <div class="columns">
+            <div style="display: flex; justify-content: space-between">
                 <div class="column">
                     <h1 class="title">
                         Contact Manager
@@ -32,9 +37,13 @@
                         <%=`Welcome, ${name}!`%>
                     </h2>
                 </div>
+<<<<<<< HEAD
                 <div class="column level-item level-right">
-                    <a href="/contacts/logout">
-                    <button class="button is-light is-pulled-right">
+                    <a class="button is-light is-pulled-right" href="/contacts/logout">
+=======
+                <div class="column logout">
+                    <a class="button is-light is-pulled-right" href="/contacts/logout">
+>>>>>>> 50ecaaa6c4ef52f7cef7f74ea7de42bd1026d955
                         Logout
                     </button>
                     </a>
@@ -45,34 +54,43 @@
 </section>
 
 <div class="container">
-    <div class="level" style="margin-top: 1.5rem">
-        
-        <div class="level-item level-right">
-            <form action="/search" method="GET">
-                <div class="field has-addons">
-                    <p class="control">
-                        <input class="input" type="text" placeholder="Search for contact...">
-                    </p>
-                    <p class="control">
-                        <button class="button is-success" onclick="doSearch()">
-                            Go
-                        </button>
-                    </p>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="level">
-        <div class="level-item level-right">
+    <div class="level" style="margin-top: 1.5rem; display: flex; justify-content: space-between">
+        <!--<div class="level-item level-left">
             <button class="btn btn-success" type="button" onclick="toggleModal()">
                 + Add New Contact
             </button>
         </div>
+
+        <div class="level-item level-right">
+            <div class="field has-addons">
+                <p class="control">
+                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
+                </p>
+                <p class="control">
+                    <button class="button is-success" onclick="doSearch(this)" required>
+                        Go
+                    </button>
+                </p>
+            </div>
+        </div>-->
+        <div>
+            <button class="btn btn-success" type="button" onclick="toggleModal()">
+                + Add New Contact
+            </button>
+        </div>
+        <div>
+            <div class="field has-addons">
+                <p class="control">
+                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
+                </p>
+                <p class="control">
+                    <button class="button is-success" onclick="doSearch(this)" required>
+                        Go
+                    </button>
+                </p>
+            </div>
+        </div>
     </div>
-
-    <p>
-
-    </p>
 
     <div class="accordion" id="contactsAccordion">
         <% if (contacts.length == 0) { %>
@@ -80,27 +98,27 @@
         <% } else {%>
             <% for (var i = 0; i < contacts.length; i++ ) { %>
                 <% const contact = contacts[i]; %>
-                <%- include('partialViews/singleContact', { index: i, name: contact.name, phoneNumber: contact.phoneNumber, email: contact.email, address: "3200 N Alafaya Trail, Orlando FL 32826" }); %>
+                <%- include('partialViews/singleContact', { index: i, contact: contacts[i] }); %>
             <% } %>
         <% }%>
     </div>
-
-
-
-
-
-
-
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script>
-    function doSearch() {
-        
+    function doSearch(e) {
+        var parameters = { search: $("#searchField").val() };
+
+        if (!parameters.search) {
+            $("#searchField").addClass("is-danger");
+            return;
+        }
+
+        $("#searchField").removeClass("is-danger");
+
+        $.get( '/contacts/search', parameters, (data) => {
+            console.log("somehow returned in the ajax call!");
+            console.log(data);
+        });
     }
 </script>
 
