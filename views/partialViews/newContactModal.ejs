@@ -27,7 +27,7 @@
 
                 <div class="control is-expanded">
                     <label class="label">Phone Number</label>
-                    <input class="input is-expanded numbersOnly" type="text" name="newPhone" id="newPhone" pattern="[23456789]" return false;" minlength="10" maxlength="10" placeholder="Phone Number">
+                    <input class="input is-expanded phoneNum" type="text" name="newPhone" id="newPhone" pattern="[23456789]" return false;" minlength="10" maxlength="10" placeholder="Phone Number">
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                 </div>
                 <div class="control is-expanded">
                     <label class="label">Zip Code</label>
-                    <input class="input is-expanded numbersOnly" type="text" return false;" name="newZipcode" pattern="[0-9]" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
+                    <input class="input is-expanded zipCode" type="text" return false;" name="newZipcode" pattern="[0-9]" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
                 </div>
             </div>
         </section>
@@ -76,26 +76,26 @@
         else
             modal.addClass("is-active");
     }
-//     jQuery('.numbersOnly').keydown(function () { 
-//     this.value = this.value.replace(/[^0-9\.]/g,'');
-// });
-// $('.numbersOnly').keyup(function () {
-//     if (this.value != this.value.replace(/[^0-9\.]/g, '')) {
-//        this.value = this.value.replace(/[^0-9\.]/g, '');
-//     }
-// });
-$(".numbersOnly").keypress(function(event) {
+$(".phoneNum").keypress(function(event) {
   // Backspace, tab, enter, end, home, left, right
-  // We don't support the del key in Opera because del == . == 46.
   var controlKeys = [8, 9, 13, 35, 36, 37, 39];
-  // IE doesn't support indexOf
   var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
-  // Some browsers just don't raise events for control keys. Easy.
-  // e.g. Safari backspace.
-  if (!event.which || // Control keys in most browsers. e.g. Firefox tab is 0
-      (49 <= event.which && event.which <= 57) || // Always 1 through 9
+  if (!event.which || 
+      (48 <= event.which && event.which <= 57) || // Always 1 through 9
       (48 == event.which && $(this).attr("value")) || // No 0 first digit
-      isControlKey) { // Opera assigns values for control keys.
+      isControlKey) {
+    return;
+  } else {
+    event.preventDefault();
+  }
+});
+$(".zipCode").keypress(function(event) {
+  // Backspace, tab, enter, end, home, left, right
+  var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+  var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
+  if (!event.which || 
+      (48 <= event.which && event.which <= 57) || // Always 1 through 9
+      isControlKey) {
     return;
   } else {
     event.preventDefault();
