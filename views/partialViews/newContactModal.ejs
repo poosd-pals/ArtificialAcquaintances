@@ -81,7 +81,7 @@ $(".phoneNum").keypress(function(event) {
   var controlKeys = [8, 9, 13, 35, 36, 37, 39];
   var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
   if (!event.which || 
-      (48 <= event.which && event.which <= 57) || // Always 1 through 9
+      (48 <= event.which && event.which <= 57) || // Always 0 through 9
       (48 == event.which && $(this).attr("value")) || // No 0 first digit
       isControlKey) {
     return;
@@ -94,7 +94,7 @@ $(".zipCode").keypress(function(event) {
   var controlKeys = [8, 9, 13, 35, 36, 37, 39];
   var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
   if (!event.which || 
-      (48 <= event.which && event.which <= 57) || // Always 1 through 9
+      (48 <= event.which && event.which <= 57) || // Always 0 through 9
       isControlKey) {
     return;
   } else {
