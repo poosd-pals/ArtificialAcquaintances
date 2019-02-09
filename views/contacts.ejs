@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Contact Manager</title>
+    <title>ArtificialAcquaintances</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
             <div style="display: flex; justify-content: space-between">
                 <div class="column">
                     <h1 class="title">
-                        Contact Manager
+                        ArtificialAcquaintances
                     </h1>
                     <h2 class="subtitle">
                         <%=`Welcome, ${name}!`%>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="column logout">
                     <a href="/contacts/logout">
-                        <button class="button is-light is-pulled-right">
+                        <button class="button is-light is-pulled-right" onclick="isLoading(this)">
                         Logout
                     </button>
                     </a>
@@ -51,24 +51,6 @@
 
 <div class="container">
     <div class="level" style="margin-top: 1.5rem; display: flex; justify-content: space-between">
-        <!--<div class="level-item level-left">
-            <button class="btn btn-success" type="button" onclick="toggleModal()">
-                + Add New Contact
-            </button>
-        </div>
-
-        <div class="level-item level-right">
-            <div class="field has-addons">
-                <p class="control">
-                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
-                </p>
-                <p class="control">
-                    <button class="button is-success" onclick="doSearch(this)" required>
-                        Go
-                    </button>
-                </p>
-            </div>
-        </div>-->
         <div>
             <button class="btn btn-success" type="button" onclick="toggleModal()">
                 + Add New Contact
@@ -101,6 +83,8 @@
 </div>
 
 <script>
+
+
     function doSearch(e) {
         var parameters = { search: $("#searchField").val() };
 
@@ -110,10 +94,12 @@
         }
 
         $("#searchField").removeClass("is-danger");
+        $(e).addClass("is-loading");
 
         $.get( '/contacts/search', parameters, (data) => {
             console.log("somehow returned in the ajax call!");
             console.log(data);
+            $(e).removeClass("is-loading");
         });
     }
 </script>

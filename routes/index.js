@@ -44,27 +44,18 @@ router.post('/', function(req, res) {
 			}
 
 			if(!user) {
-				console.log("we connected!");
-
 				req.session.hasError = true;
 				req.session.errorMessage = "User with that email does not exist!";
 				
 				mongoose.disconnect();
-
 				res.redirect('/');
-
 				return;
 			}
-
-			console.log(user._id);
 
 			user.comparePassword(req.body.password, (err, isMatch) => {
 				mongoose.disconnect();
 
-				if(err) throw err;
-
-				console.log(req.body.password);
-				console.log(isMatch);
+				if (err) throw err;
 
 				if(isMatch) {
 					req.session.uid = user._id;

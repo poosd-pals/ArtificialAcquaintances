@@ -6,7 +6,7 @@
             <button class="delete" aria-label="close" onclick="toggleModal()"></button>
         </header>
         <section class="modal-card-body">
-            <form action="/contacts/add" method="POST">
+            <form action="/contacts/add" method="POST" onsubmit="isLoading('#saveButton')">
             <div class="field is-grouped">
                 <div class="control is-expanded">
                     <label class="label">First Name</label>
@@ -27,7 +27,7 @@
 
                 <div class="control is-expanded">
                     <label class="label">Phone Number</label>
-                    <input class="input is-expanded phoneNum" type="text" name="newPhone" id="newPhone" pattern="[23456789]" return false;" minlength="10" maxlength="10" placeholder="Phone Number">
+                    <input class="input is-expanded phoneNum" type="text" name="newPhone" id="newPhone" pattern="[0-9]{10}" placeholder="Phone Number">
                 </div>
             </div>
 
@@ -55,12 +55,12 @@
                 </div>
                 <div class="control is-expanded">
                     <label class="label">Zip Code</label>
-                    <input class="input is-expanded zipCode" type="text" return false;" name="newZipcode" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
+                    <input class="input is-expanded zipCode" type="text" name="newZipcode" pattern="[0-9]" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
                 </div>
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success">Save</button>
+            <button id="saveButton" class="button is-success" >Save</button>
         </form>
             <button class="button" onclick="toggleModal()">Cancel</button>
         </footer>
@@ -68,6 +68,10 @@
 </div>
 
 <script>
+    function isLoading(e) {
+        $(e).addClass("is-loading");
+    }
+
     function toggleModal() {
         const modal = $("#newContactModal")
 
@@ -76,29 +80,30 @@
         else
             modal.addClass("is-active");
     }
-$(".phoneNum").keypress(function(event) {
-  // Backspace, tab, enter, end, home, left, right
-  var controlKeys = [8, 9, 13, 35, 36, 37, 39];
-  var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
-  if (!event.which || 
-      (48 <= event.which && event.which <= 57) || // Always 0 through 9
-      (48 == event.which && $(this).attr("value")) || // No 0 first digit
-      isControlKey) {
-    return;
-  } else {
-    event.preventDefault();
-  }
-});
-$(".zipCode").keypress(function(event) {
-  // Backspace, tab, enter, end, home, left, right
-  var controlKeys = [8, 9, 13, 35, 36, 37, 39];
-  var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
-  if (!event.which || 
-      (48 <= event.which && event.which <= 57) || // Always 0 through 9
-      isControlKey) {
-    return;
-  } else {
-    event.preventDefault();
-  }
+
+    $(".phoneNum").keypress(function (event) {
+        // Backspace, tab, enter, end, home, left, right
+        var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
+        if (!event.which ||
+            (48 <= event.which && event.which <= 57) || // Always 0 through 9
+            (48 == event.which && $(this).attr("value")) || // No 0 first digit
+            isControlKey) {
+            return;
+        } else {
+            event.preventDefault();
+        }
+    });
+    $(".zipCode").keypress(function (event) {
+        // Backspace, tab, enter, end, home, left, right
+        var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
+        if (!event.which ||
+            (48 <= event.which && event.which <= 57) || // Always 0 through 9
+            isControlKey) {
+            return;
+        } else {
+            event.preventDefault();
+        }
 });
 </script>
