@@ -6,7 +6,7 @@
             <button class="delete" aria-label="close" onclick="toggleModal()"></button>
         </header>
         <section class="modal-card-body">
-            <form action="/contacts/add" method="POST" onsubmit="isLoading(this)">
+            <form action="/contacts/add" method="POST" onsubmit="isLoading('#saveButton')">
             <div class="field is-grouped">
                 <div class="control is-expanded">
                     <label class="label">First Name</label>
