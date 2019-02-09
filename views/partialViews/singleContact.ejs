@@ -15,31 +15,31 @@
                         <i class="fa fa-7x fa-user-circle" aria-hidden="true"></i>
                     </figure>
                 </div>
+
                 <div class="column is-two-fifths left">
-					<form action="/contacts/delete" method="POST">
-						<div class="container contact-info">
-							<ul>
-								<li>
-									<i class="fa fa-address-card" aria-hidden="true"></i>
-									<p class="contact-info" style="display: inline-block">
-										<%= `${ contact.firstName } ${contact.lastName }` %>
-									</p>
-								</li>
-								<li>
-									<i class="fa fa-phone-square" aria-hidden="true"></i>
-									<p class="contact-info" style="display: inline-block">
-										<%= `${contact.phoneNumber}` %>
-									</p>
-								</li>
-								<li>
-									<i class="fa fa-envelope-square" aria-hidden="true"></i>
-									<p class="contact-info" style="display: inline-block">
-										<%= `${contact.email}` %>
-									</p>
-								</li>
-							</ul>
-						</div>
+					<div class="container contact-info">
+						<ul>
+							<li>
+								<i class="fa fa-address-card" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${ contact.firstName } ${contact.lastName }` %>
+								</p>
+							</li>
+							<li>
+								<i class="fa fa-phone-square" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.phoneNumber}` %>
+								</p>
+							</li>
+							<li>
+								<i class="fa fa-envelope-square" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.email}` %>
+								</p>
+							</li>
+						</ul>
 					</div>
+
 					<div class="column is-two-fifths right">
 						<div class="container contact-info">
 							<ul>
@@ -56,8 +56,20 @@
 						</div>
 					</div>
 				</div>
-				<p class="delete-contact"><button class="has-text-danger">Delete Contact</button></p>
-			</form>
+				<div class="button is-danger" onclick="deleteContact('<%= contact._id %>')">Delete Contact</div>
+			</div>
         </div>
     </div>
 </div>
+
+<script>
+	function deleteContact(contactId) {
+		console.log(contactId);
+
+		var parameters = { search: contactId };
+
+		$.post( '/contacts/delete', parameters, (data) => {
+			console.log("somehow returned in the ajax post call!");
+		});
+	}
+</script>
