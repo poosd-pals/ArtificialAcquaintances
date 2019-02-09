@@ -10,6 +10,11 @@ const url = mongo.ConnectionString;
 
 /* GET contact manager page for logged in user. */
 router.get('/', function(req, res, next) {
+	if(!req.session.uid) {
+		res.redirect("/");
+		return;
+	}
+
 	mongoose.connect(url, (err) => {
 		if(err) {
 			mongoose.disconnect();
