@@ -103,4 +103,24 @@ router.post('/add', (req, res, next) => {
 	});
 });
 
+router.post('/delete', (req, res,next) => {
+	mongoose.connect(url, (err) => {
+		if(err) {
+			mongoose.disconnect();
+			throw err;
+		}
+
+		Contact.deleteOne( { daddy: req.session.uid }, (err) => {
+			if(err) {
+				mongoose.disconnect();
+				throw err;
+			}
+
+			mongoose.disconnect();
+			console.log("successfully removed contact!");
+			res.redirect("/contacts");
+		});
+	});
+});
+
 module.exports = router;

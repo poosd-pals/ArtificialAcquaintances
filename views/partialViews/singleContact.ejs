@@ -16,46 +16,48 @@
                     </figure>
                 </div>
                 <div class="column is-two-fifths left">
-                    <div class="container contact-info">
-                        <ul>
-                            <li>
-                                <i class="fa fa-address-card" aria-hidden="true"></i>
-                                <p class="contact-info" style="display: inline-block">
-                                    <%= `${ contact.firstName } ${contact.lastName }` %>
-                                </p>
-                            </li>
-                            <li>
-                                <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                <p class="contact-info" style="display: inline-block">
-                                    <%= `${contact.phoneNumber}` %>
-                                </p>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope-square" aria-hidden="true"></i>
-                                <p class="contact-info" style="display: inline-block">
-                                    <%= `${contact.email}` %>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="column is-two-fifths right">
-                    <div class="container contact-info">
-                        <ul>
-                            <li>
-                                <i class="fa fa-address-book" aria-hidden="true"></i>
-                                <p class="contact-info" style="display: inline-block">
-                                    <%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
-                                </p>
-                                <p class="contact-info" style="display: inline-block">
-                                    <%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="delete-contact"><a href="#" class="has-text-danger">Delete Contact</a></p>
+					<form action="/contacts/delete" method="POST">
+						<div class="container contact-info">
+							<ul>
+								<li>
+									<i class="fa fa-address-card" aria-hidden="true"></i>
+									<p class="contact-info" style="display: inline-block">
+										<%= `${ contact.firstName } ${contact.lastName }` %>
+									</p>
+								</li>
+								<li>
+									<i class="fa fa-phone-square" aria-hidden="true"></i>
+									<p class="contact-info" style="display: inline-block">
+										<%= `${contact.phoneNumber}` %>
+									</p>
+								</li>
+								<li>
+									<i class="fa fa-envelope-square" aria-hidden="true"></i>
+									<p class="contact-info" style="display: inline-block">
+										<%= `${contact.email}` %>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="column is-two-fifths right">
+						<div class="container contact-info">
+							<ul>
+								<li>
+									<i class="fa fa-address-book" aria-hidden="true"></i>
+									<p class="contact-info" style="display: inline-block">
+										<%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
+									</p>
+									<p class="contact-info" style="display: inline-block">
+										<%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<p class="delete-contact"><button class="has-text-danger">Delete Contact</button></p>
+			</form>
         </div>
     </div>
 </div>
