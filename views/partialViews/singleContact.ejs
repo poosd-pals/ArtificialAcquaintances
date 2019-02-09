@@ -66,10 +66,11 @@
 	function deleteContact(contactId) {
 		console.log(contactId);
 
-		var parameters = { search: contactId };
+		var parameters = { uid: contactId };
 
 		$.post( '/contacts/delete', parameters, (data) => {
 			console.log("somehow returned in the ajax post call!");
+			location.reload(true);
 		});
 	}
 </script>
