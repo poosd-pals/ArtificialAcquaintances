@@ -6,7 +6,7 @@
             <button class="delete" aria-label="close" onclick="toggleModal()"></button>
         </header>
         <section class="modal-card-body">
-            <form action="/contacts/add" method="POST">
+            <form action="/contacts/add" method="POST" onsubmit="isLoading(this)">
             <div class="field is-grouped">
                 <div class="control is-expanded">
                     <label class="label">First Name</label>
@@ -27,7 +27,7 @@
 
                 <div class="control is-expanded">
                     <label class="label">Phone Number</label>
-                    <input class="input is-expanded phoneNum" type="text" name="newPhone" id="newPhone" pattern="[0-9]{10}" required placeholder="Phone Number">
+                    <input class="input is-expanded phoneNum" type="text" name="newPhone" id="newPhone" pattern="[0-9]{10}" placeholder="Phone Number">
                 </div>
             </div>
 
@@ -55,12 +55,12 @@
                 </div>
                 <div class="control is-expanded">
                     <label class="label">Zip Code</label>
-                    <input class="input is-expanded zipCode" type="text" return false;" name="newZipcode" pattern="[0-9]" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
+                    <input class="input is-expanded zipCode" type="text" name="newZipcode" pattern="[0-9]" minlength="5" maxlength="5" id="newZipcode" placeholder="Zip Code">
                 </div>
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success">Save</button>
+            <button id="saveButton" class="button is-success" >Save</button>
         </form>
             <button class="button" onclick="toggleModal()">Cancel</button>
         </footer>
@@ -68,6 +68,10 @@
 </div>
 
 <script>
+    function isLoading(e) {
+        $(e).addClass("is-loading");
+    }
+
     function toggleModal() {
         const modal = $("#newContactModal")
 

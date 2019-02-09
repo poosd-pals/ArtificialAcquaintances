@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
                 <p class="subtitle has-text-grey">Please enter your information below to create your account.</p>
                 <% } %>
                 <div class="box">
-                    <form action="/register" method="POST">
+                    <form id="register-form" action="/register" method="POST" onsubmit="submitClicked()">
                         <div class="field">
                             <div class="control has-icons-left">
                                 <input class="input is-large" type="name" name="name" id="name" placeholder="Name" autofocus="" required>
@@ -53,7 +54,7 @@
                             </div>
                         </div>
 
-                        <button class="button is-block is-info is-large is-fullwidth">Register</button>
+                        <button id="register" class="button is-block is-info is-large is-fullwidth">Register</button>
 
                     </form>
                 </div>
@@ -65,5 +66,12 @@
     </div>
 </section>
 </body>
+
+<script>
+    function submitClicked() {
+        $("#register").addClass("is-loading");
+        return true;
+    }
+</script>
 
 </html>

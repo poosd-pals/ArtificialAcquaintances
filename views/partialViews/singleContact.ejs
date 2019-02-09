@@ -56,20 +56,19 @@
 						</div>
 					</div>
 				</div>
-				<div class="button is-danger" onclick="deleteContact('<%= contact._id %>')">Delete Contact</div>
+				<div class="button is-danger" onclick="deleteContact(this, '<%= contact._id %>')">Delete Contact</div>
 			</div>
         </div>
     </div>
 </div>
 
 <script>
-	function deleteContact(contactId) {
-		console.log(contactId);
+	function deleteContact(e, contactId) {
+        var parameters = { uid: contactId };
 
-		var parameters = { uid: contactId };
+        $(e).addClass("is-loading");
 
 		$.post( '/contacts/delete', parameters, (data) => {
-			console.log("somehow returned in the ajax post call!");
 			location.reload(true);
 		});
 	}

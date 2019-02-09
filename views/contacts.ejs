@@ -39,7 +39,7 @@
                 </div>
                 <div class="column logout">
                     <a href="/contacts/logout">
-                        <button class="button is-light is-pulled-right">
+                        <button class="button is-light is-pulled-right" onclick="isLoading(this)">
                         Logout
                     </button>
                     </a>
@@ -83,6 +83,8 @@
 </div>
 
 <script>
+
+
     function doSearch(e) {
         var parameters = { search: $("#searchField").val() };
 
@@ -92,10 +94,12 @@
         }
 
         $("#searchField").removeClass("is-danger");
+        $(e).addClass("is-loading");
 
         $.get( '/contacts/search', parameters, (data) => {
             console.log("somehow returned in the ajax call!");
             console.log(data);
+            $(e).removeClass("is-loading");
         });
     }
 </script>
