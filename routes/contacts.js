@@ -49,23 +49,29 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/search', (req, res, next) => {
-	var search = req.query.search;
+    var search = req.query.search;
+    var reg = new RegExp(search, 'i');
 
-	mongoose.connect(url, (err) => {
+    mongoose.connect(url, (err) => {
 		if (err) throw err;
 
 
-		Contact.find({
-			daddy: req.session.uid,
-			$text: {$search: search}
-		}).exec((err, docs) => {
-			mongoose.disconnect();
+        Contact.find({
+            '$and': [
+                { daddy: req.session.uid },
+                { '$or': [
+                    { 'firstName': reg },
+                    { 'lastName': reg }
+                ]}
+            ]
+        }).exec(function(err, docs) {
+            mongoose.disconnect();
 
-			if (err) throw err;
-			if (!docs) res.status(500).end();
+            if (err) throw err;
+            if (!docs) res.status(500).end();
 
-			res.status(200).send(docs);
-		});
+            res.status(200).send(docs);
+        });
 	});
 });
 
