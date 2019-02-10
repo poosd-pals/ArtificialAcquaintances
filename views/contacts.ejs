@@ -63,7 +63,7 @@
                     <input class="input" id="searchField" type="text" placeholder="Search for contact...">
                 </p>
                 <p class="control">
-				<button class="button is-success" onclick="if ('<%= contacts.length %>' > 0) doSearch(this, '<%= contacts[0].daddy %>'); else doSearch(this, ``)">
+                    <button id="searchButton" class="button is-success" onclick="doSearch(this)">
                         Go
                     </button>
                 </p>
@@ -84,10 +84,8 @@
 </div>
 
 <script>
-
-
-    function doSearch(e, uid) {
-        var parameters = { search: $("#searchField").val(), uid: uid };
+    function doSearch(e) {
+        var parameters = { search: $("#searchField").val() };
 
         if (!parameters.search) {
             $("#searchField").addClass("is-danger");
@@ -98,11 +96,16 @@
         $(e).addClass("is-loading");
 
         $.get( '/contacts/search', parameters, (data) => {
-            console.log("somehow returned in the ajax call!");
             console.log(data);
+
+            $("#contactsAccordion").html(data);
+
             $(e).removeClass("is-loading");
         });
+
     }
+
+    // function callback()
 </script>
 
 </body>

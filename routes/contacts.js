@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var ejs = require('ejs');
 
 User = require('./schemas/UserSchema');
 Contact = require('./schemas/ContactSchema');
@@ -57,13 +58,14 @@ router.get('/search', (req, res, next) => {
     var search = req.query.search;
     var reg = new RegExp(search, 'i');
 
+    var uid = (req.session.uid) ? req.session.uid : req.body.uid;
+
     mongoose.connect(url, (err) => {
 		if (err) throw err;
 
-
         Contact.find({
             '$and': [
-                { daddy: req.query.uid },
+                { daddy: uid },
                 { '$or': [
                     { 'firstName': reg },
                     { 'lastName': reg }
@@ -75,7 +77,17 @@ router.get('/search', (req, res, next) => {
             if (err) throw err;
             if (!docs) res.status(500).end();
 
-            res.status(200).send(docs);
+            if (req.session.uid) {
+            	var contacts;
+            	docs.forEach((contact, index) => {
+            		contacts += ejs.render(`singleContact`, { index: index, contact: contact});
+				});
+            	res.status(200).send(contacts);
+			}
+
+            else {
+				res.status(200).send(docs);
+			}
         });
 	});
 });

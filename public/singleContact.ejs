@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-header" id="<%=`header-${index}`%>">
+        <button class="btn btn-link btn-block nounderline btn-contact collapsed" type="button" data-toggle="collapse" data-target="<%=`#accordian-${index}`%>" aria-expanded="false" aria-controls="<%= `accordian-${index}`%>">
+            <h2 class="card-title">
+                <%=`${contact.firstName} ${contact.lastName}`%>
+            </h2>
+        </button>
+    </div>
+
+    <div id="<%=`accordian-${index}`%>" class="collapse" data-parent="#contactsAccordion">
+        <div class="card-body">
+            <div class="columns">
+                <div class="column is-one-fifth">
+                    <figure class="image is-96x96">
+                        <i class="fa fa-7x fa-user-circle" aria-hidden="true"></i>
+                    </figure>
+                </div>
+
+                <div class="column is-two-fifths left">
+					<div class="container contact-info">
+						<ul>
+							<li>
+								<i class="fa fa-address-card" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${ contact.firstName } ${contact.lastName }` %>
+								</p>
+							</li>
+							<% if (contact.phoneNumber.length > 0) { %>
+							<li>
+								<i class="fa fa-phone-square" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.phoneNumber}` %>
+								</p>
+							</li>
+							<% } %>
+                            <% if (contact.email.length > 0) { %>
+							<li>
+								<i class="fa fa-envelope-square" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.email}` %>
+								</p>
+							</li>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+				<div class="column is-two-fifths right">
+					<div class="container contact-info">
+						<ul>
+						<% if (contact.addressLineOne.length > 0) { %> 
+							<li>
+								<i class="fa fa-address-book" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
+								</p>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
+								</p>
+							</li>
+						<% } %>
+						</ul>
+					</div>
+					<div class="button is-small is-danger deleteButton" onclick="deleteContact(this, '<%= contact._id %>')">Delete Contact</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<script>
+	function deleteContact(e, contactId) {
+        var parameters = { uid: contactId };
+
+        $(e).addClass("is-loading");
+
+		$.post( '/contacts/delete', parameters, (data) => {
+			location.reload(true);
+		});
+	}
+</script>
