@@ -84,7 +84,7 @@ p.contact-info {
     padding-top: 0%;
 }
 
-.column.is-two-fifths.left {
+.column.is-3-desktop.left {
     display: block;
     margin: auto;
     margin-top: 2%;
@@ -93,16 +93,24 @@ p.contact-info {
     padding-bottom: 0%;
 }
 
-.column.is-two-fifths.right {
+/* .column.is-two-fifths.right {
     display: block;
     margin-top: 2%;
+    padding-top: 0%;
+    padding-left: 1%;
+} */
+.column.right {
+    display: block;
+    margin: auto;
+    margin-top: 1.5%;
     padding-top: 0%;
     padding-left: 1%;
 }
 
 .contact-info.add-line2,
 .contact-info.add-line3 {
-    margin-left: 4.5%;
+    margin-left: 3.5%;
+    padding-top: 0%;
 }
 
 figure.image.is-96x96 {
@@ -145,11 +153,13 @@ input::-webkit-inner-spin-button {
     float: left;
     width: 90px;
     height: 92.4px;
-  }
-  
-  .header h1, h2 {
+}
+.header h1, h2 {
     position: relative;
     top: 18px;
     left: 10px;
-  }
+}
+.card-title {
+    font-size: 14px;
+}
   
