@@ -121,7 +121,10 @@ input::-webkit-inner-spin-button {
 .login-register-link {
     text-transform: uppercase;
     color: #ffffff;
-    font-weight: 900;
 }
 .login {
     color: #6C6060
+}
+.button {
+    font-family: 'Catamaran', san-serif; 
+}
