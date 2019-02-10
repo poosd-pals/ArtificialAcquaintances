@@ -3,31 +3,33 @@ html,body {
     font-weight: 300;
     
 }
+
 figure.image.is-96x96 {
     display:block;
     margin-left: auto;
     margin-right: auto;
 }
+
 input {
     font-weight: 300;
 }
+
 /* Removes spin control on number input fields */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 p {
     font-weight: 700;
 }
 p.subtitle {
     padding-top: 1rem;
 }
-
 p.left {
     float:left;
 }
-
 p.contact-info {
     font-size: 15px;
     font-family: inherit;
@@ -44,30 +46,18 @@ p.contact-info {
     text-align: left;
     text-decoration: none;
 }
+
 .button {
     font-family: 'Catamaran', san-serif; 
 }
+
 .card-body {
     margin-bottom: 1.5%;
 }
 .card-title {
     font-size: 14px;
 }
-.column.logout{
-    margin-top: 2%;
-}
-.container.image {
-    float: left;
-    width: 15%;
-    height: 100%;
-    padding: 1.5% 2% 2% 1%;
-}
-.container.contact-info {
-    float:left;
-    width: 85%;
-    padding-left: 0;
-    margin-bottom: 2.5%;
-}
+
 .column.is-one-fifth {
     display: block;
     margin-top: 2%;
@@ -89,6 +79,9 @@ p.contact-info {
     padding-top: 0%;
     padding-left: 1%;
 } */
+.column.logout{
+    margin-top: 2%;
+}
 .column.right {
     display: block;
     margin: auto;
@@ -96,6 +89,7 @@ p.contact-info {
     padding-top: 0%;
     padding-left: 1%;
 }
+
 /* single contact address */
 .contact-info.add-line2,
 .contact-info.add-line3 {
@@ -118,6 +112,20 @@ p.contact-info {
         padding-top: 0%;
     }
 }
+
+.container.image {
+    float: left;
+    width: 15%;
+    height: 100%;
+    padding: 1.5% 2% 2% 1%;
+}
+.container.contact-info {
+    float:left;
+    width: 85%;
+    padding-left: 0;
+    margin-bottom: 2.5%;
+}
+
 .delete-contact {
     text-align: right;
     font-weight: 400;
@@ -129,9 +137,11 @@ p.contact-info {
     margin-top: 10px;
     font-weight: 700;
 }
+
 .font-catamaran {
-    font-family: 'Catamaran', san-serif;
+    font-family: 'Catamaran', sans-serif;
 }
+
 .header h1, h2 {
     position: relative;
     top: 18px;
@@ -142,22 +152,22 @@ p.contact-info {
     width: 90px;
     height: 92.4px;
 }
+
 .hero .nav, .hero.is-success .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 .hero.is-info {
-    
     background: url(https://i.imgur.com/Iqb3wUT.jpg);
     /* Set a specific height */
     height: 50%;
-
-  /* Position and center the image to scale nicely on all screens */
+    /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
+
 .login {
     color: #6C6060
 }
@@ -165,6 +175,7 @@ p.contact-info {
     text-transform: uppercase;
     color: #ffffff;
 }
+
 .title {
     text-transform: uppercase;
 }
