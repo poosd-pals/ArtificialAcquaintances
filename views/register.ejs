@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
@@ -13,17 +14,17 @@
 </head>
 
 <body>
-<section class="hero is-success is-fullheight">
+<section class="hero is-info is-fullheight">
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
-                <h3 class="title has-text-grey">Register</h3>
+                <h3 class="title is-3 has-text-grey-dark">Register</h3>
                 <% if (hasError) { %>
                 <p class="subtitle has-text-danger">
                     <%=errorMessage%>
                 </p>
                 <% } else { %>
-                <p class="subtitle has-text-grey">Please enter your information below to create your account.</p>
+                <p class="subtitle is-4 has-text-grey">Please enter your information below to create your account.</p>
                 <% } %>
                 <div class="box">
                     <form id="register-form" action="/register" method="POST" onsubmit="submitClicked()">
@@ -54,11 +55,11 @@
                             </div>
                         </div>
 
-                        <button id="register" class="button is-block is-info is-large is-fullwidth">Register</button>
+                        <button id="register" class="button is-block is-dark is-large is-fullwidth is-uppercase">Register</button>
 
                     </form>
                 </div>
-                <p class="has-text-grey">
+                <p class="login-register-link">
                     <a href="/">Already Have an Account?</a>
                 </p>
             </div>

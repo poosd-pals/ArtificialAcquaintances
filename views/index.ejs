@@ -14,11 +14,12 @@
 </head>
 
 <body>
-<section class="hero is-success is-fullheight hero-bg">
+<!-- <section class="hero is-success is-fullheight hero-bg"> -->
+<section class="hero is-info is-fullheight">
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
-                <h3 class="title has-text-info">Artificial Acquaintances</h3>
+                <h2 class="title is-3 has-text-grey-dark">Artificial Acquaintances</h2>
 
                 <% if (hasError) { %>
                     <p class="subtitle has-text-danger">
@@ -29,8 +30,8 @@
                         Registration completed!
                     </p>
                 <% } else { %>
-                    <p class="subtitle has-text-grey">
-                        Please login to proceed.
+                    <p class="subtitle is-4 has-text-grey">
+                        Please login to proceed
                     </p>
                 <% } %>
 
@@ -53,10 +54,10 @@
                                 </span>
                             </div>
                         </div>
-                        <button class="button is-block is-info is-large is-fullwidth" onclick="$(this).addClass('is-loading')">Login</button>
+                        <button class="button is-dark is-block is-large is-fullwidth is-uppercase" onclick="$(this).addClass('is-loading')">Login</button>
                     </form>
                 </div>
-                <p class="has-text-grey">
+                <p class="login-register-link">
                     <a href="/register">Don't Have an Account?</a>
                 </p>
             </div>
