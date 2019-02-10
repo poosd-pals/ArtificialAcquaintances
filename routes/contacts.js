@@ -54,8 +54,8 @@ router.get('/logout', (req, res, next) => {
 	res.redirect("/");
 });
 
-router.get('/search', (req, res, next) => {
-    var search = req.query.search;
+router.post('/', (req, res, next) => {
+    var search = req.body.searchField;
     var reg = new RegExp(search, 'i');
 
     var uid = (req.session.uid) ? req.session.uid : req.body.uid;
@@ -78,11 +78,7 @@ router.get('/search', (req, res, next) => {
             if (!docs) res.status(500).end();
 
             if (req.session.uid) {
-            	var contacts;
-            	docs.forEach((contact, index) => {
-            		contacts += ejs.render(`singleContact`, { index: index, contact: contact});
-				});
-            	res.status(200).send(contacts);
+            	res.render("contacts", { name: req.session.displayName, contacts: docs});
 			}
 
             else {

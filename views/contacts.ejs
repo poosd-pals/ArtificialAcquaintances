@@ -58,16 +58,18 @@
             </button>
         </div>
         <div>
-            <div class="field has-addons">
-                <p class="control">
-                    <input class="input" id="searchField" type="text" placeholder="Search for contact...">
-                </p>
-                <p class="control">
-                    <button id="searchButton" class="button is-success" onclick="doSearch(this)">
-                        Go
-                    </button>
-                </p>
-            </div>
+            <form action="/contacts" method="POST" onsubmit="$('#searchButton').addClass('is-loading')">
+                <div class="field has-addons">
+                    <p class="control">
+                        <input class="input" id="searchField" name="searchField" type="text" placeholder="Search for contact...">
+                    </p>
+                    <p class="control">
+                        <button id="searchButton" class="button is-success">
+                            Go
+                        </button>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -84,26 +86,26 @@
 </div>
 
 <script>
-    function doSearch(e) {
-        var parameters = { search: $("#searchField").val() };
-
-        if (!parameters.search) {
-            $("#searchField").addClass("is-danger");
-            return;
-        }
-
-        $("#searchField").removeClass("is-danger");
-        $(e).addClass("is-loading");
-
-        $.get( '/contacts/search', parameters, (data) => {
-            console.log(data);
-
-            $("#contactsAccordion").html(data);
-
-            $(e).removeClass("is-loading");
-        });
-
-    }
+    // function doSearch(e) {
+    //     var parameters = { search: $("#searchField").val() };
+    //
+    //     if (!parameters.search) {
+    //         $("#searchField").addClass("is-danger");
+    //         return;
+    //     }
+    //
+    //     $("#searchField").removeClass("is-danger");
+    //     $(e).addClass("is-loading");
+    //
+    //     $.get( '/contacts/search', parameters, (data) => {
+    //         console.log(data);
+    //
+    //         $("#contactsAccordion").html(data);
+    //
+    //         $(e).removeClass("is-loading");
+    //     });
+    //
+    // }
 
     // function callback()
 </script>
