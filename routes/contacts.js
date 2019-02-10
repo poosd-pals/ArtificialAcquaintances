@@ -63,7 +63,7 @@ router.get('/search', (req, res, next) => {
 
         Contact.find({
             '$and': [
-                { daddy: req.session.uid },
+                { daddy: req.query.uid },
                 { '$or': [
                     { 'firstName': reg },
                     { 'lastName': reg }

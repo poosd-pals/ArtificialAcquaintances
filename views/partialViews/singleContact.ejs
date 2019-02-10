@@ -25,38 +25,43 @@
 									<%= `${ contact.firstName } ${contact.lastName }` %>
 								</p>
 							</li>
+							<% if (contact.phoneNumber.length > 0) { %>
 							<li>
 								<i class="fa fa-phone-square" aria-hidden="true"></i>
 								<p class="contact-info" style="display: inline-block">
 									<%= `${contact.phoneNumber}` %>
 								</p>
 							</li>
+							<% } %>
+                            <% if (contact.email.length > 0) { %>
 							<li>
 								<i class="fa fa-envelope-square" aria-hidden="true"></i>
 								<p class="contact-info" style="display: inline-block">
 									<%= `${contact.email}` %>
 								</p>
 							</li>
+							<% } %>
 						</ul>
 					</div>
-
-					<div class="column is-two-fifths right">
-						<div class="container contact-info">
-							<ul>
-								<li>
-									<i class="fa fa-address-book" aria-hidden="true"></i>
-									<p class="contact-info" style="display: inline-block">
-										<%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
-									</p>
-									<p class="contact-info" style="display: inline-block">
-										<%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
-									</p>
-								</li>
-							</ul>
-						</div>
-					</div>
 				</div>
-				<div class="button is-small is-danger deleteButton" onclick="deleteContact(this, '<%= contact._id %>')">Delete Contact</div>
+				<div class="column is-two-fifths right">
+					<div class="container contact-info">
+						<ul>
+						<% if (contact.addressLineOne.length > 0) { %> 
+							<li>
+								<i class="fa fa-address-book" aria-hidden="true"></i>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
+								</p>
+								<p class="contact-info" style="display: inline-block">
+									<%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
+								</p>
+							</li>
+						<% } %>
+						</ul>
+					</div>
+					<div class="button is-small is-danger deleteButton" onclick="deleteContact(this, '<%= contact._id %>')">Delete Contact</div>
+				</div>
 			</div>
         </div>
     </div>

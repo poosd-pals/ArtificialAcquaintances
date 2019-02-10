@@ -62,7 +62,7 @@
                     <input class="input" id="searchField" type="text" placeholder="Search for contact...">
                 </p>
                 <p class="control">
-                    <button class="button is-success" onclick="doSearch(this)" required>
+				<button class="button is-success" onclick="if ('<%= contacts.length %>' > 0) doSearch(this, '<%= contacts[0].daddy %>'); else doSearch(this, ``)">
                         Go
                     </button>
                 </p>
@@ -85,8 +85,8 @@
 <script>
 
 
-    function doSearch(e) {
-        var parameters = { search: $("#searchField").val() };
+    function doSearch(e, uid) {
+        var parameters = { search: $("#searchField").val(), uid: uid };
 
         if (!parameters.search) {
             $("#searchField").addClass("is-danger");
