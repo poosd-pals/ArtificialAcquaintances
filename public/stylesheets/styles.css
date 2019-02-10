@@ -101,4 +101,6 @@ input::-webkit-inner-spin-button {
 }
 .deleteButton {
     font-weight: 700;
+    margin-top: 10%;
+    margin-left: 70%;
 }
