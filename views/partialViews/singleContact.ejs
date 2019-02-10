@@ -51,9 +51,12 @@
 							<li>
 								<i class="fa fa-address-book" aria-hidden="true"></i>
 								<p class="contact-info" style="display: inline-block">
-									<%= `${contact.addressLineOne}, ${contact.addressLineTwo}` %>
+									<%= `${contact.addressLineOne}` %>
 								</p>
-								<p class="contact-info" style="display: inline-block">
+								<p class="contact-info add-line2">
+									<%= `${contact.addressLineTwo}` %>
+								</p>
+								<p class="contact-info add-line3" style="display: inline-block">
 									<%= `${contact.city}, ${contact.state} ${contact.zipcode}` %>
 								</p>
 							</li>
