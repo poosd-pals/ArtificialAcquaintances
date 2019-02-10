@@ -1,8 +1,10 @@
 html,body {
-    font-family: 'Catamaran', san-serif;
     font-size: 14px;
     font-weight: 300;
     
+}
+.font-catamaran {
+    font-family: 'Catamaran', san-serif;
 }
 .hero.is-info {
     /* background: #F2F6FA; */
@@ -36,6 +38,8 @@ p.left {
 }
 
 p.contact-info {
+    font-size: 15px;
+    font-family: inherit;
     padding-left: 1%;
     padding-top: 2%;
     padding-bottom: 1%;
