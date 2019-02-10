@@ -141,3 +141,15 @@ input::-webkit-inner-spin-button {
 .button {
     font-family: 'Catamaran', san-serif; 
 }
+.header img {
+    float: left;
+    width: 90px;
+    height: 92.4px;
+  }
+  
+  .header h1, h2 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+  }
+  
