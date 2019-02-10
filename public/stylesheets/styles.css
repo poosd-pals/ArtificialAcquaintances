@@ -3,28 +3,19 @@ html,body {
     font-weight: 300;
     
 }
-.font-catamaran {
-    font-family: 'Catamaran', san-serif;
+figure.image.is-96x96 {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
-.hero.is-info {
-    /* background: #F2F6FA; */
-    background: url(https://i.imgur.com/Iqb3wUT.jpg);
-    /* Set a specific height */
-  height: 50%;
-
-  /* Position and center the image to scale nicely on all screens */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-.hero .nav, .hero.is-success .nav {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
 input {
     font-weight: 300;
+}
+/* Removes spin control on number input fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 p {
     font-weight: 700;
@@ -53,29 +44,30 @@ p.contact-info {
     text-align: left;
     text-decoration: none;
 }
-
+.button {
+    font-family: 'Catamaran', san-serif; 
+}
 .card-body {
     margin-bottom: 1.5%;
 }
-
+.card-title {
+    font-size: 14px;
+}
 .column.logout{
     margin-top: 2%;
 }
-
 .container.image {
     float: left;
     width: 15%;
     height: 100%;
     padding: 1.5% 2% 2% 1%;
 }
-
 .container.contact-info {
     float:left;
     width: 85%;
     padding-left: 0;
     margin-bottom: 2.5%;
 }
-
 .column.is-one-fifth {
     display: block;
     margin-top: 2%;
@@ -83,7 +75,6 @@ p.contact-info {
     margin-right: auto;
     padding-top: 0%;
 }
-
 .column.is-3-desktop.left {
     display: block;
     margin: auto;
@@ -92,7 +83,6 @@ p.contact-info {
     padding-left: 1%;
     padding-bottom: 0%;
 }
-
 /* .column.is-two-fifths.right {
     display: block;
     margin-top: 2%;
@@ -106,12 +96,13 @@ p.contact-info {
     padding-top: 0%;
     padding-left: 1%;
 }
-
+/* single contact address */
 .contact-info.add-line2,
 .contact-info.add-line3 {
     margin-left: 3.0%;
     padding-top: 0%;
 }
+/* single contact address responsiveness for laptop */
 @media (min-width: 1025px) and (max-width: 1280px) {
     .contact-info.add-line2,
     .contact-info.add-line3 {
@@ -119,61 +110,61 @@ p.contact-info {
         padding-top: 0%;
     }
 }
+/* single contact address responsiveness for tablets and ipads */
 @media (min-width: 768px) and (max-width: 1024px) {
     .contact-info.add-line2,
     .contact-info.add-line3 {
         margin-left: 6.2%;
         padding-top: 0%;
     }
-  }
-
-figure.image.is-96x96 {
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
 }
 .delete-contact {
     text-align: right;
     font-weight: 400;
 }
-/* Removes spin control on number input fields */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 .deleteButton {
-    /* text-align: right; */
     position: absolute;
     bottom: 10px;
     right: 20px;
     margin-top: 10px;
     font-weight: 700;
 }
-.title {
-    text-transform: uppercase;
-}
-.login-register-link {
-    text-transform: uppercase;
-    color: #ffffff;
-}
-.login {
-    color: #6C6060
-}
-.button {
-    font-family: 'Catamaran', san-serif; 
-}
-.header img {
-    float: left;
-    width: 90px;
-    height: 92.4px;
+.font-catamaran {
+    font-family: 'Catamaran', san-serif;
 }
 .header h1, h2 {
     position: relative;
     top: 18px;
     left: 10px;
 }
-.card-title {
-    font-size: 14px;
+.header img {
+    float: left;
+    width: 90px;
+    height: 92.4px;
 }
-  
+.hero .nav, .hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.hero.is-info {
+    
+    background: url(https://i.imgur.com/Iqb3wUT.jpg);
+    /* Set a specific height */
+    height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.login {
+    color: #6C6060
+}
+.login-register-link {
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.title {
+    text-transform: uppercase;
+}
