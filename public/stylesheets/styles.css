@@ -116,9 +116,12 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 .deleteButton {
+    /* text-align: right; */
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    margin-top: 10px;
     font-weight: 700;
-    margin-top: 10%;
-    margin-left: 70%;
 }
 .title {
     text-transform: uppercase;
