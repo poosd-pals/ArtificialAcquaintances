@@ -60,9 +60,9 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button id="saveButton" class="button is-success" >Save</button>
+            <button id="saveButton" class="button is-success has-text-weight-semibold" >Save</button>
         </form>
-            <button class="button" onclick="toggleModal()">Cancel</button>
+            <button class="button has-text-weight-semibold has-text-grey" onclick="toggleModal()">Cancel</button>
         </footer>
     </div>
 </div>
@@ -83,7 +83,8 @@
 
     $(".phoneNum").keypress(function (event) {
         // Backspace, tab, enter, end, home, left, right
-        var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        // var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        var controlKeys = [8, 9, 13];
         var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
         if (!event.which ||
             (48 <= event.which && event.which <= 57) || // Always 0 through 9
@@ -96,7 +97,8 @@
     });
     $(".zipCode").keypress(function (event) {
         // Backspace, tab, enter, end, home, left, right
-        var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        // var controlKeys = [8, 9, 13, 35, 36, 37, 39];
+        var controlKeys = [8, 9, 13];
         var isControlKey = controlKeys.join(",").match(new RegExp(event.which));
         if (!event.which ||
             (48 <= event.which && event.which <= 57) || // Always 0 through 9
