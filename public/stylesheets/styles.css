@@ -102,3 +102,7 @@ input::-webkit-inner-spin-button {
 .deleteButton {
     font-weight: 700;
 }
+.title {
+    font-family: 'Catamaran', san-serif;
+    text-transform: uppercase;
+}
