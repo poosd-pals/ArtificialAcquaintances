@@ -41,7 +41,7 @@ router.get('/', function(req, res, next) {
             else {
                 res.render('contacts', {
                     name: req.session.displayName,
-                    contacts: contacts
+                    contacts: contacts.reverse()
                 });
             }
 		});
@@ -78,7 +78,7 @@ router.post('/', (req, res, next) => {
             if (!docs) res.status(500).end();
 
             if (req.session.uid) {
-            	res.render("contacts", { name: req.session.displayName, contacts: docs});
+            	res.render("contacts", { name: req.session.displayName, contacts: docs.reverse()});
 			}
 
             else {
