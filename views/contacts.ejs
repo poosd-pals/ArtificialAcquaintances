@@ -23,11 +23,11 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
 </head>
 
-<body>
+<body class="contact-page-background">
 
 <%- include('partialViews/newContactModal'); %>
 
-<section class="hero is-dark is-bold">
+<section class="hero is-dark">
     <div class="hero-body">
         <div class="container">
             <div style="display: flex; justify-content: space-between">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="column logout">
                     <a href="/contacts/logout">
-                        <button class="button is-light is-pulled-right has-text-weight-semibold has-text-grey" onclick="isLoading(this)">
+                        <button class="btn btn-secondary is-pulled-right has-text-weight-semibold" onclick="isLoading(this)">
                         Logout
                     </button>
                     </a>
@@ -55,7 +55,7 @@
 <div class="container">
     <div class="level" style="margin-top: 1.5rem; display: flex; justify-content: space-between">
         <div>
-            <button class="btn btn-success has-text-weight-semibold" type="button" onclick="toggleModal()">
+            <button class="button is-success has-text-weight-semibold" type="button" onclick="toggleModal()">
                 + Add New Contact
             </button>
         </div>

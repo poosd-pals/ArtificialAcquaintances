@@ -1,7 +1,18 @@
 html,body {
     font-size: 14px;
     font-weight: 300;
-    
+}
+
+body{
+    min-height: 100vh;
+  }
+body.contact-page-background {
+    background: url(https://i.imgur.com/WiYYJIE.jpg); 
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 figure.image.is-96x96 {
@@ -157,6 +168,14 @@ p.contact-info {
 .hero .nav, .hero.is-success .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+.hero.is-dark {
+    background: url(https://i.imgur.com/fkcx7ks.jpg);
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 .hero.is-info {
     background: url(https://i.imgur.com/Iqb3wUT.jpg);
